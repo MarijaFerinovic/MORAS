@@ -1,0 +1,39 @@
+push constant 100
+push constant 2
+call Div.div 2
+
+pop static 0
+label END
+goto END
+
+
+function Div.div 2
+push constant 0
+pop local 0 //Q
+
+push argument 0
+pop local 1 //R
+
+label DIV_LOOP
+push local 1
+push argument 1
+lt
+if-goto DIV_DONE
+
+//R = R - D
+push local 1
+push argument 1
+sub
+pop local 1
+
+//Q = Q + 1
+push local 0
+push constant 1
+add
+pop local 0
+
+goto DIV_LOOP
+
+label DIV_DONE
+push local 0
+return

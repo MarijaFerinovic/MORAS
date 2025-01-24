@@ -1,0 +1,29 @@
+push constant 5
+push constant 1
+call Mod.mod 2
+
+pop static 0
+label END
+goto END
+
+function Mod.mod 2
+push argument 0
+pop local 0
+
+label MOD_LOOP
+push local 0
+push argument 1
+lt
+if-goto MOD_DONE
+
+//R = R - D
+push local 0
+push argument 1
+sub
+pop local 0
+
+goto MOD_LOOP
+
+label MOD_DONE
+push local 0
+return

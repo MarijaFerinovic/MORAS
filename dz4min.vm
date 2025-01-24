@@ -1,0 +1,51 @@
+push constant 1    
+push constant 3    
+push constant 2    
+call Min.min 3
+pop static 0
+label END
+goto END
+
+
+
+function Min.min 3
+
+push argument 0
+push argument 1
+lt
+if-goto MIN_A
+
+push argument 1
+push argument 0
+lt
+if-goto MIN_B
+
+push argument 2
+push argument 0
+lt
+if-goto MIN_C
+
+label MIN_A
+push argument 0
+push argument 2
+lt
+if-goto MIN_AC
+
+label MIN_B
+push argument 1
+push argument 2
+lt
+if-goto MIN_BC
+
+label MIN_C
+push argument 2
+
+return
+
+label MIN_AC
+push argument 0
+return
+
+label MIN_BC
+push argument 1
+return
